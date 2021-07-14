@@ -1,65 +1,27 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
-import { fetchCustomers } from './asyncActions/customers';
-import { addCustomerAction, removeCustomerAction } from './store/customerReducer';
+import {useDispatch, useSelector} from 'react-redux'
+import { decrementCreator, incrementCreator } from './store/countReducer';
+import { setUsers } from './store/userReducer';
+
 
 function App() {
   
   const dispatch = useDispatch()
   
-  const cash = useSelector(state => state.cash.cash)
-  const customers = useSelector(state => state.customers.customers)
-  
-  console.log(cash)
-  console.log(customers)
-
-  function addCash(cash) {
-    dispatch({type: 'ADD_CASH', payload: cash})
-  }
-
-  function getCash(cash) {
-    dispatch({type: 'GET_CASH', payload: cash})
-  }
-
-  const addCustomer = (name) => {
-    const customer = {
-      name,
-      id: Date.now(),
-    }
-    dispatch(addCustomerAction(customer))
-  }
-
-function removeCustomer(customer) {
-  dispatch(removeCustomerAction(customer.id))
-}
+  const count = useSelector(state => state.countReducer.count)
+  const users = useSelector(state => state.userReducer.users)
 
   return (
+
     <div>
 
-      <div>
-        <div className='cash'>{cash}</div>
-        <button onClick={() => addCash(Number(prompt()))}>Add cash</button>
-        <button onClick={() => getCash(Number(prompt()))} style={{marginBottom: 50}}>Get cash</button>
-        <button onClick={() => addCustomer(prompt())}>Add customers</button>
-        <button onClick={() => dispatch(fetchCustomers())}>Fetch Customers</button>
-      </div>
+      <div>{count}</div>
+      <button onClick={() => dispatch(incrementCreator())}>Plus</button>
+      <button onClick={() => dispatch(decrementCreator())}>Decrement</button>
 
-      <div className='cash'>
-
-        {customers.length > 0 ? 
-        <div>
-          {customers.map(customer => 
-            <div key={customer.id} className='customer' onClick={() => removeCustomer(customer)}>{customer.name}</div>  
-          )}
-        </div>
-        :
-        <div>
-          Нет клиентов
-        </div>  
-      }
-      </div>
-    
+      <button onClick={() => dispatch(setUsers(prompt()))}>Add user</button>
+      <div>{users}</div>
     </div>
   )
 }
