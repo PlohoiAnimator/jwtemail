@@ -5,15 +5,15 @@ const defaultState = {
 const INCREMENT = 'INCREMENT'
 const DECREMENT = 'DECREMENT'
 
-export default function countReducer(state = defaultState, action) {
-    switch(action.type) {
-        case INCREMENT: 
+export default function countReducer(state=defaultState, action) {
+    switch (action.type) {
+        case INCREMENT:
             return {...state, count: state.count + 1}
-        case DECREMENT: 
+        case DECREMENT:
             return {...state, count: state.count - 1}
     }
     return state
 }
 
-export const incrementCreator = () => ({type: INCREMENT})
-export const decrementCreator = () => ({type: DECREMENT})
+export const incrementAction = () => ({type: INCREMENT})
+export const decrementAction = () => ({type: DECREMENT})
