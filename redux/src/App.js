@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import {useDispatch, useSelector} from 'react-redux'
 import { decrementAction, incrementAction } from './store/countReducer';
-import { fetchUsers } from './asyncActions/customers';
 import { removeUsersAction } from './store/userReducer';
 
 function App() {
@@ -24,7 +23,7 @@ function App() {
       <button onClick={() => dispatch(decrementAction())}>Get count</button>
 
       <div>
-        <button onClick={() => dispatch(fetchUsers())}>Add Users</button>
+        <button>Add Users</button>
 
         <div>{users.map(user => 
           <div className='customer' 
