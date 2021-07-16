@@ -18,5 +18,5 @@ export default function userReducer(state = defaultState, action) {
   return state
 }
 
-export const addUsersAction = payload => ({type: SET_USERS, payload})
-export const removeUsersAction = payload => ({type: REMOVE_USERS, payload})
+export const addUsersCreator = payload => ({type: SET_USERS, payload})
+export const removeUsersCreator = payload => ({type: REMOVE_USERS, payload})
