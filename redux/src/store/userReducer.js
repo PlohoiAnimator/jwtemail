@@ -3,6 +3,7 @@ const defaultState = {
 }
 
 const SET_USERS = 'SET_USERS'
+export const FETCH_USERS = 'FETCH_USERS'
 const REMOVE_USERS = 'REMOVE_USERS'
 
 export default function userReducer(state = defaultState, action) {
@@ -18,5 +19,6 @@ export default function userReducer(state = defaultState, action) {
   return state
 }
 
-export const addUsersCreator = payload => ({type: SET_USERS, payload})
+export const setUsers = payload => ({type: SET_USERS, payload})
+export const fetchUsersCreator = () => ({type: FETCH_USERS})
 export const removeUsersCreator = payload => ({type: REMOVE_USERS, payload})

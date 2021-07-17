@@ -1,5 +1,5 @@
 import {put, takeEvery} from 'redux-saga/effects'
-import { ASYNC_DECREMENT, ASYNC_INCREMENT, decrementCreator, incrementCreator } from '../store/countReducer'
+import { ASYNC_INCREMENT, ASYNC_DECREMENT, decrementCreator, incrementCreator } from '../store/countReducer'
 
 const delay = ms => new Promise(res => setTimeout(res, ms))
 

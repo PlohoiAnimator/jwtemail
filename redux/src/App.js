@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {useDispatch, useSelector} from 'react-redux'
-import { removeUsersCreator } from './store/userReducer';
+import { fetchUsersCreator, removeUsersCreator } from './store/userReducer';
 import { asyncDecrementCreator, asyncIncrementCreator } from './store/countReducer';
 
 function App() {
@@ -18,10 +18,10 @@ function App() {
 
       <div>{count}</div>
       <button onClick={() => dispatch(asyncIncrementCreator())}>ИНКРЕМЕНТ++</button>
-      <button onClick={() =>dispatch(asyncDecrementCreator())}>Get count</button>-00
+      <button onClick={() => dispatch(asyncDecrementCreator())}>Get count</button>
 
       <div>
-        <button>Add Users</button>
+        <button onClick={() => dispatch(fetchUsersCreator())}>Add Users</button>
 
         <div>{users.map(user => 
           <div className='customer' 
